@@ -67,19 +67,16 @@ The trading dataset contains historical trade execution records from a cryptocur
 │   └── historical_data.csv
 │
 ├── visualizations/
-│   ├── fg_01_timeseries.png
-│   ├── fg_02_distribution.png
-│   ├── ...
-│   ├── trader_01_cumulative_pnl.png
-│   ├── trader_02_top_accounts.png
-│   └── ...
+│   ├── fear_grid/
+│   │   └── ...
+│   ├── historical/
+│   │   └── ...
+│   └── sentiment_trader/
+│   │   └── ...
 │
 ├── fear_greed_visualizations.py
 ├── trader_visualizations.py
-├── sentiment_analysis.py
-├── notebooks/
-│   └── analysis.ipynb
-│
+├── sentiment_trader_analysis.py
 └── README.md
 ```
 
@@ -152,18 +149,14 @@ git clone https://github.com/your-username/bitcoin-market-sentiment-analysis.git
 cd bitcoin-market-sentiment-analysis
 ```
 
-Install dependencies:
-
-```bash
-pip install -r requirements.txt
-```
-
 Run the visualization scripts:
 
 ```bash
 python fear_greed_visualizations.py
 python trader_visualizations.py
 ```
+
+Run file: sentiment_trader_analysis.ipynb
 
 ---
 
