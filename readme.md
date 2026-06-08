@@ -193,7 +193,3 @@ Examples include:
 * Real-time sentiment monitoring.
 
 ---
-
-## Author
-
-Developed as a data analytics and exploratory data science project focused on cryptocurrency markets, trader behavior, and market sentiment analysis.
