@@ -19,18 +19,14 @@ fg["month"] = fg["date"].dt.month
 SENT_ORDER = ["Extreme Fear", "Fear", "Neutral", "Greed", "Extreme Greed"]
 
 COLORS = {
-    "Extreme Fear": "red",
+    "Extreme Fear":  "red",
     "Fear": "orange",
     "Neutral": "yellow",
     "Greed": "green",
-    "Extreme Greed": "blue"
+    "Extreme Greed": "blue",
 }
 
 months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
-
-# =============================================================================
-# 1. DAILY FEAR & GREED INDEX
-# =============================================================================
 
 plt.figure(figsize=(15,6))
 
@@ -66,10 +62,6 @@ plt.savefig(
 )
 plt.close()
 
-# =============================================================================
-# 2. SENTIMENT DISTRIBUTION
-# =============================================================================
-
 counts = fg["classification"].value_counts().reindex(SENT_ORDER)
 
 plt.figure(figsize=(8,5))
@@ -98,10 +90,6 @@ plt.savefig(
     dpi=300
 )
 plt.close()
-
-# =============================================================================
-# 3. YEARLY AVERAGE INDEX
-# =============================================================================
 
 yearly_avg = fg.groupby("year")["value"].mean()
 
@@ -132,11 +120,6 @@ plt.savefig(
     dpi=300
 )
 plt.close()
-
-# =============================================================================
-# 4. MONTHLY SEASONALITY
-# =============================================================================
-
 monthly_avg = fg.groupby("month")["value"].mean()
 
 plt.figure(figsize=(10,5))
@@ -158,10 +141,6 @@ plt.savefig(
     dpi=300
 )
 plt.close()
-
-# =============================================================================
-# 5. YEAR-MONTH HEATMAP
-# =============================================================================
 
 pivot = fg.groupby(
     ["year","month"]
@@ -197,10 +176,6 @@ plt.savefig(
     dpi=300
 )
 plt.close()
-
-# =============================================================================
-# 6. SENTIMENT TRANSITION MATRIX
-# =============================================================================
 
 fg["next_sentiment"] = fg["classification"].shift(-1)
 
@@ -256,10 +231,6 @@ plt.savefig(
 )
 plt.close()
 
-# =============================================================================
-# 7. STREAK ANALYSIS
-# =============================================================================
-
 fg["streak_id"] = (
     fg["classification"]
     != fg["classification"].shift()
@@ -298,10 +269,6 @@ plt.savefig(
 )
 plt.close()
 
-# =============================================================================
-# 8. VIOLIN DISTRIBUTION
-# =============================================================================
-
 data = [
     fg.loc[
         fg["classification"] == sentiment,
@@ -332,10 +299,6 @@ plt.savefig(
     dpi=300
 )
 plt.close()
-
-# =============================================================================
-# 9. YEARLY SENTIMENT COMPOSITION
-# =============================================================================
 
 year_sent = (
     fg.groupby(
